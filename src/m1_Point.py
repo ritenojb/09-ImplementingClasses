@@ -50,18 +50,23 @@ class Point(object):
         self.start_x = x
         self.start_y = y
         self.count = 0
+        self.distance = 0
     def __repr__(self):
         return 'Point({}, {})'.format(self.x, self.y)
     def clone(self):
         return Point(self.x, self.y)
     def move_to(self, x, y):
+        delta_x = x-self.x
+        delta_y = y - self.y
         self.x = x
         self.y = y
         self.count = self.count + 1
+        self.distance = self.distance + math.sqrt(delta_x**2 + delta_y**2)
     def move_by(self, x, y):
         self.x = self.x + x
         self.y = self.y + y
         self.count = self.count + 1
+        self.distance = self.distance + math.sqrt(x**2 + y**2)
     def get_number_of_moves_made(self):
         return self.count
     def get_distance_from(self, Point):
@@ -75,7 +80,7 @@ class Point(object):
         distance = math.sqrt((dist_x)**2 + (dist_y)**2)
         return distance
     def get_distance_traveled(self):
-
+        return self.distance
 
 
 
@@ -882,7 +887,7 @@ def run_test_get_distance_traveled():
         print('Actual:', p4.get_distance_traveled())
     """
     # --------------------------------------------------------------------------
-    # TODO: 11.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 11.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_distance_traveled  method specified above.
     # --------------------------------------------------------------------------
     print()
