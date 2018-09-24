@@ -90,7 +90,10 @@ class Point(object):
             return p3
         else:
             return p2
-
+    def halfway_to(self, p2):
+        half_x = (p2.x+self.x)/2
+        half_y = (p2.y+self.y)/2
+        return (half_x, half_y)
 
 def run_test_init():
     """
@@ -1061,7 +1064,7 @@ def run_test_halfway_to():
 
     """
     # --------------------------------------------------------------------------
-    # TODO: 13.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 13.  Follow the same instructions as in TO-DO 3 above,
     #    but for the  halfway_to  method specified above.
     # --------------------------------------------------------------------------
     print()
@@ -1069,6 +1072,31 @@ def run_test_halfway_to():
     print('Testing the   halfway_to   method of the Point class.')
     print('-----------------------------------------------------------')
 
+    p1 = Point(10, 20)
+    p2 = Point(30, 100)
+
+    print()
+    print('Should be: Point(20.0, 60.0)')
+    print('Actual is:', p1.halfway_to(p2))
+    print('Should be: Point(20.0, 60.0)')
+    print('Actual is:', p2.halfway_to(p1))
+
+    print()
+    print('Should be: Point(10.0, 20.0)')
+    print('Actual is:', p1.halfway_to(p1))
+
+    p3 = Point(-10, 20)
+    p4 = Point(30, -100)
+
+    print()
+    print('Should be: Point(10.0, -40.0)')
+    print('Actual is:', p3.halfway_to(p4))
+    print('Should be: Point(10.0, -40.0)')
+    print('Actual is:', p3.halfway_to(p4))
+
+    print()
+    print('Should be: Point(-10.0, 20.0)')
+    print('Actual is:', p3.halfway_to(p3))
 
 # ------------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
